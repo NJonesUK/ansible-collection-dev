@@ -1,3 +1,3 @@
-# Ansible Collection - njones.dev
+# Ansible Collection - NJonesUK.dev
 
-Documentation for the collection.
+A set of Ansible roles for installing dev tools on Ubuntu and Kali Linux.

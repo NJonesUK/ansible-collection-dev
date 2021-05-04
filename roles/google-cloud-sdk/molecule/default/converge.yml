@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include google-cloud-sdk"
+      include_role:
+        name: "google-cloud-sdk"

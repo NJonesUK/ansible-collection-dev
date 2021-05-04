@@ -1,0 +1,25 @@
+- name: Ensure pre-requisite packages are installed
+  apt:
+    name:
+      - gnupg
+      - apt-transport-https
+      - ca-certificates
+    update_cache: yes
+    state: present
+  become: "yes"
+
+- name: Add Cloud SDK apt repository key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: "present"
+
+- name: Add Cloud SDK apt repository
+  apt_repository:
+    repo: "deb http://packages.cloud.google.com/apt cloud-sdk main"
+    state: "present"
+
+- name: Ensure Google Cloud SDK is installed
+  apt:
+    name: google-cloud-sdk
+    state: "present"
+    update_cache: "yes"
