@@ -1,0 +1,30 @@
+# tasks file for kali
+
+- name: Remove unwanted packages
+  apt:
+    name: "{{ packages_remove|default([]) }}"
+    force: yes
+    purge: yes
+    state: absent
+  become: yes
+
+- name: Update packages
+  apt:
+    update_cache: yes
+    upgrade: dist
+  become: yes
+
+- name: Install common packages
+  apt:
+    name: "{{ packages|default([]) }}"
+    update_cache: yes
+    install-recommends: no
+    state: present
+  become: yes
+
+- name: Install common pip packages
+  pip:
+    name: "{{ pip_packages|default([]) }}"
+    state: latest
+  become: yes
+

@@ -1,0 +1,27 @@
+- name: Ensure unzip is installed
+  apt:
+    name: unzip
+    update_cache: yes
+    state: present
+  become: "yes"
+
+- name: Download and extract the AWS CLI v2
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /root
+    remote_src: yes
+  become: yes
+
+- name: Install AWS CLI v2
+  command: /root/aws/install
+  args:
+    creates: /usr/local/aws-cli
+
+- name: Confirm CLI is installed
+  command: aws --version
+  register: cli_version
+  changed_when: false
+
+- name: Print CLI version output
+  ansible.builtin.debug:
+    var: cli_version

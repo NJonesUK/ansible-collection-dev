@@ -1,0 +1,35 @@
+packages:
+  - aptitude
+  - apt-transport-https
+  - build-essential
+  - ca-certificates
+  - curl
+  - g++
+  - git
+  - htop
+  - libssl-dev
+  - libffi-dev
+  - locate
+  - lsof
+  - meld
+  - openssl
+  - openssh-server
+  - p7zip-full
+  - python3-dev
+  - python3-pip
+  - python3-setuptools
+  - screen
+  - sshpass
+  - sudo
+  - tmux
+  - ufw
+  - unzip
+  - zsh
+packages_remove:
+  - crda
+  - cups
+pip_packages:
+  - ansible
+  - molecule[docker]
+  - requests
+  - scapy

@@ -1,0 +1,26 @@
+---
+- name: Ensure gpg is installed
+  apt:
+    name: gnupg2
+    update_cache: yes
+    state: present
+  become: "yes"
+
+- name: Add Microsoft apt signing key
+  apt_key:
+    url: "{{ vscode_aptkey_url }}"
+    state: present
+  become: "yes"
+
+- name: Add Visual Studio Code apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+  become: "yes"
+
+- name: Install Visual Studio Code
+  apt:
+    name: code
+    state: present
+    update_cache: "yes"
+  become: "yes"
