@@ -1,0 +1,46 @@
+---
+- name: Install prerequisites
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+      - python3
+      - python3-pip
+      - python3-virtualenv
+    state: present
+    update_cache: yes
+
+- name: Add Docker apt key
+  apt_key:
+    url: https://download.docker.com/linux/debian/gpg
+    state: present
+
+- name: Add Docker apt repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian jessie stable
+    state: present
+
+- name: Update packages
+  apt:
+
+- name: Install Docker via apt
+  apt:
+    name: docker-ce
+    install-recommends: no
+    state: present
+    update_cache: yes
+
+- name: Add docker_users to docker group
+  user:
+    name: "{{ docker_users }}"
+    groups: docker
+    append: yes
+    
+- name: Install docker-compose and supporting libraries
+  pip:
+    name:
+      - docker-compose
+    state: present
