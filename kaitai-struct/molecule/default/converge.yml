@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include kaitai-struct"
+      include_role:
+        name: "kaitai-struct"
