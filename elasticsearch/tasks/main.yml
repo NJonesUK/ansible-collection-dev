@@ -1,0 +1,32 @@
+- name: Install prerequisites
+  apt:
+    name:
+      - gnupg
+      - ca-certificates
+      - apt-transport-https
+      - git
+    state: present
+    update_cache: true
+
+- name: Install Java
+  apt:
+    name: openjdk-11-jre
+    state: present
+    update_cache: yes
+
+- name: Add ElasticSearch apt key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add ElasticSearch apt repository
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/5.x/apt stable main
+    state: present
+
+- name: Install ElasticSearch via apt
+  apt:
+    name: elasticsearch
+    update_cache: yes
+    install-recommends: no
+    state: present
