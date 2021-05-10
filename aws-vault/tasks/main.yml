@@ -1,0 +1,8 @@
+# https://github.com/99designs/aws-vault
+
+- name: Download aws-vault
+  get_url:
+    url: "https://github.com/99designs/aws-vault/releases/download/{{ awsvault_version }}/aws-vault-linux-amd64"
+    dest: /usr/bin/aws-vault
+    mode: '0755'
+  become: yes

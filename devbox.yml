@@ -1,0 +1,10 @@
+---
+  - hosts: all
+    roles:
+      - dev-base
+      - docker
+      - vscode
+      - molecule
+      - packer
+      - awscli
+      - aws-vault
