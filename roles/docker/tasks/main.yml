@@ -29,6 +29,7 @@
 - name: Update packages
   apt:
     update_cache: yes
+  become: yes
 
 - name: Install Docker via apt
   apt:
