@@ -15,3 +15,4 @@
   pip:
     name: "molecule[docker]"
     state: present
+  become: yes

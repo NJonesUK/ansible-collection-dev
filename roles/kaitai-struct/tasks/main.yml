@@ -6,8 +6,10 @@
       - default-jre-headless
     update_cache: yes
     state: present
+  become: yes
 
 - name: Install Kaitai Struct Compiler via apt
   apt:
     deb: https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.9/kaitai-struct-compiler_0.9_all.deb
     state: present
+  become: yes
