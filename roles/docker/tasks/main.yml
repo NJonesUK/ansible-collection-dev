@@ -22,7 +22,7 @@
 
 - name: Add Docker apt repository
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/debian jessie stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian buster stable
     state: present
   become: yes
 
@@ -33,17 +33,13 @@
 
 - name: Install Docker via apt
   apt:
-    name: docker-ce
+    name:
+      - docker-ce 
+      - docker-ce-cli
+      - containerd.io
     install-recommends: no
     state: present
     update_cache: yes
-  become: yes
-
-- name: Add docker_users to docker group
-  user:
-    name: "{{ docker_users }}"
-    groups: docker
-    append: yes
   become: yes
    
 - name: Install docker-compose and supporting libraries
