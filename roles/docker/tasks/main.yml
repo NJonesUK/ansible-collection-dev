@@ -41,13 +41,6 @@
     state: present
     update_cache: yes
   become: yes
-
-- name: Add docker_users to docker group
-  user:
-    name: "{{ docker_users }}"
-    groups: docker
-    append: yes
-  become: yes
    
 - name: Install docker-compose and supporting libraries
   pip:
