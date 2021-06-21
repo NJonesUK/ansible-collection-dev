@@ -23,7 +23,7 @@ pytest:
   stage: test
   image: docker:dind
   script:
-    - apk install python3 py3-pip
+    - apk add python3 py3-pip
     - pip install pytest pytest-molecule
     - pytest --junitxml=report.xml
   artifacts:
