@@ -23,6 +23,7 @@ pytest:
   stage: test
   image: quay.io/upennlibraries/dind_molecule
   script:
+    - pip install --upgrade pip
     - pip install pytest pytest-molecule
     - pytest --junitxml=report.xml
   artifacts:
