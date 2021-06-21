@@ -21,6 +21,7 @@ build-job:       # This job runs in the build stage, which runs first.
 
 pytest:
   stage: test
+  image: quay.io/upennlibraries/dind_molecule
   script:
     - pytest --junitxml=report.xml
   artifacts:
