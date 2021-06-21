@@ -23,6 +23,7 @@ pytest:
   stage: test
   image: quay.io/upennlibraries/dind_molecule
   script:
+    - pip3 install pytest pytest-molecule
     - pytest --junitxml=report.xml
   artifacts:
     when: always
