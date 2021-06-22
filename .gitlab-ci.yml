@@ -15,12 +15,14 @@ stages:          # List of stages for jobs, and their order of execution
 
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
+  tags: [shell]
   script:
     - echo "Compiling the code..."
     - echo "Compile complete."
 
 pytest:
   stage: test
+  tags: [shell]
   script:
     - pytest --junitxml=report.xml
   artifacts:
