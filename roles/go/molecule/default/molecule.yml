@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: kali-go
+    options:
+      ansible_python_interpreter: /usr/bin/python3
+    image: kalilinux/kali-rolling:latest
+    log: true
+  - name: ubuntu-go
+    options:
+      ansible_python_interpreter: /usr/bin/python3
+    image: ubuntu:latest
+    log: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
